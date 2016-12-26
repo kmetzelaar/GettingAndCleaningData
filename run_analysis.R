@@ -28,8 +28,9 @@ yTestData <- read.table(file.path(filePath,unzipDir,testDir,"y_test.txt"))
 trainSubject <- read.table(file.path(filePath,unzipDir,trainDir,"subject_train.txt"))
 testSubject <- read.table(file.path(filePath,unzipDir,testDir,"subject_test.txt"))
 
-# read the names of the "features," which are the names/categories of the experimental data collected
+# Read the names of the "features," which are the names/categories of the experimental data collected
 features <- read.table(file.path(filePath,unzipDir,"features.txt"))
+# Normalize feature names to lower case
 features$V2 <- tolower(features$V2)
 
 # Read the names of the activities (WALKING, SITTING, etc.)
