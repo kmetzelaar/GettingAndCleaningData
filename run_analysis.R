@@ -1,9 +1,15 @@
 ## Coursera: Getting and Cleaning Data
 ## Course Project
 
-##!!!!!!!!!!!!!!!!!Replace "filePath" with your working directory/folder!!!!!!!!!!!!!!!!
-filePath <- "/Users/kmetzelaar/GettingAndCleaningData/Project"
-##!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+###################################
+## Download/Unzip/Gather the data##
+###################################
+
+
+######Replace "filePath" with your working directory/folder############
+filePath <- "/Users/kmetzelaar/GettingAndCleaningData/Project" 
 
 ## Change the following values as necessary based on updates to the data set and/or zip file
 fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -33,6 +39,14 @@ features <- read.table(file.path(filePath,unzipDir,"features.txt"))
 # Normalize feature names to lower case
 features$V2 <- tolower(features$V2)
 
+
+
+
+#################################################################
+## Project Goal #1                                             ##
+## Merge the training and the test sets to create one data set.##
+#################################################################
+
 # Read the names of the activities (WALKING, SITTING, etc.)
 activityLabels <- read.table(file.path(filePath,unzipDir,"activity_labels.txt"))
 ## Assign names to columns
@@ -57,16 +71,43 @@ names(bindedTrainTest) <- features$V2
 ## Combine the subject, activity, and experiment measurements into one data frame
 bindedSubjectActivityAndData <- cbind(bindedSubjectActivity, bindedTrainTest)
 
+
+
+############################################################################
+## Project Goal #3                                                        ##
+## Uses descriptive activity names to name the activities in the data set.##
+############################################################################
+
 ## Merge the subject, activity, and experiment measurement data frame with the activityLabels
 ## This will add a column with the descriptive activity name (WALKING, SITTING, etc) to a new data frame
 mergedData <- merge(bindedSubjectActivityAndData, activityLabels, by.x = "activity_number", all.x=TRUE)
 ## Re-order the columns such that activity name comes after subject number. Remove activity number.
 mergedData <- mergedData[ , c(2, 564, 3:563)]
+#############################################################################
+## At this point the data table "mergedData" achieves Project Goals #1 & #3##
+#############################################################################
+
+
+
+###########################################################################################
+## Project Goal #2                                                                       ##     
+## Extract only the measurements on the mean and standard deviation for each measurement.##
+###########################################################################################
 
 ## Extract only the columns that contain mean and standard deviation measurements
 ## Don't forget to keep the columns that contain activity and subject information
 mergedData <- mergedData[ , grepl("activity|subject|(mean|std)\\(\\)",names(mergedData))]
+#######################################################################
+## At this point the data table "mergedData" achieves Project Goal #2##
+#######################################################################
 
+
+
+
+#######################################################################
+## Project Goal #4                                                   ##     
+## Appropriately labels the data set with descriptive variable names.##
+#######################################################################
 
 ## Make more descriptive, normalized column names
 tempNames <- names(mergedData) 
@@ -82,6 +123,18 @@ tempNames <- gsub("[(][)]", "", tempNames)
 tempNames <- gsub("__", "_", tempNames)
 tempNames <- gsub("_$", "", tempNames)
 names(mergedData) <- tempNames
+#######################################################################
+## At this point the data table "mergedData" achieves Project Goal #4##
+#######################################################################
+
+
+
+
+############################################################################
+## Project Goal #5                                                        ##     
+## From the data set in step 4, create a second, independent tidy data set##
+## with the average of each variable for each activity and each subject.  ##
+############################################################################
 
 ## Create Tidy Data
 ## Use "aggregate" command, which computes summary statistics of data subsets, to calculate the mean along subject + activity
@@ -93,4 +146,7 @@ write.table(mergedData, file.path(filePath,"DataSet.txt"), row.names = FALSE)
 ## Write tidy data set with average of each variable for each activity and each subject.
 write.table(tidyData, file.path(filePath, "TidyData.txt"), row.names = FALSE)
 
+###############################
+## All Project Goals complete##
+###############################
 
