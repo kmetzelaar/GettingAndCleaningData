@@ -25,7 +25,7 @@ https://www.coursera.org/course/getdata
 * No special packages over the baseline RStudio packages are required
 
 ### Steps
-* Set working directory: Please modify the very first line of code (filePath <- ?<path>?) in the run_analysis.R file to reference your working directory
+* Set working directory: Please modify the very first line of code (filePath <- <path>) in the `run_analysis.R` file to reference your working directory
 * Run the R script `run_analysis.R`. It reads the data from the Web and performs all data manipulation and calculation.
 
 ### Output
