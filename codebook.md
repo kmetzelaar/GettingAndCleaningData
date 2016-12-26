@@ -19,7 +19,8 @@
 * Merge `activity_name` with `bindedSubjectActivityAndData` using  `activity_number` from each data frame as the key.
 * Merged data frame is call `mergedData`.
 * Subset `mergedData` to contain only the `std` and `mean` feature columns.
-* Use `aggregate` command, which computes summary statistics of data subsets, to calculate the mean along subject + activity
+* Use `aggregate` command, which computes summary statistics of data subsets, to calculate the mean along subject plus activity
+
 ## Overall Data Set
 ### Key columns
 Column name         | Description
@@ -46,7 +47,7 @@ Column name         | Description
 `gravity`           | Measurement of gravity
 `standard_deviation`| Standard deviation measurement
 `mean`              | Mean measurement
-`X`,`Y`, or `Z      | Axis of measurement
+`X`,`Y`, or `Z`     | Axis of measurement
 ## Tidy Data Set
 ### Key columns
 Column name         | Description

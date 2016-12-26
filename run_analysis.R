@@ -128,8 +128,8 @@ mergedData <- mergedData[ , grepl("activity|subject|(mean|std)\\(\\)",names(merg
 ## At this point the data table "mergedData" achieves Project Goal #2##
 #######################################################################
 
-codebook("* Use `aggregate` command, which computes summary statistics of data subsets, to calculate the mean along subject + activity")
-
+codebook("* Use `aggregate` command, which computes summary statistics of data subsets, to calculate the mean along subject plus activity")
+codebook("")
 
 
 #######################################################################
@@ -183,7 +183,7 @@ codebook("`body`              | Measurement from body")
 codebook("`gravity`           | Measurement of gravity")
 codebook("`standard_deviation`| Standard deviation measurement")
 codebook("`mean`              | Mean measurement")
-codebook("`X`,`Y`, or `Z      | Axis of measurement")
+codebook("`X`,`Y`, or `Z`     | Axis of measurement")
 
 
   
