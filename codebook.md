@@ -10,7 +10,9 @@
 * Test experiment measurements read from: `./UCI HAR Dataset/test/subject_test.txt`
 * Feature names (measurement names) read from: `./UCI HAR Dataset/features.txt`
 * Activity types read from: `./UCI HAR Dataset/activity_labels.txt`
+
 ##Steps
+
 * Bind together the Training and Test subjects into one data frame `bindedSubject`
 * Bind together the Training and Test activities into one data frame `bindedActivity`
 * Combine the subject and activity data frames into one data frame `bindedSubjectActivity`

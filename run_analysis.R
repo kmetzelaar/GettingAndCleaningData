@@ -70,7 +70,9 @@ names(activityLabels) <- c("activity_number", "activity_name")
 ## Merge the training and the test sets to create one data set.##
 #################################################################
 
+codebook("")
 codebook("##Steps")
+codebook("")
 
 codebook("* Bind together the Training and Test subjects into one data frame `bindedSubject`")
 bindedSubject <- rbind(trainSubject, testSubject)
